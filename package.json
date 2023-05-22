@@ -1,0 +1,25 @@
+{
+  "name": "electron-insta-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkam678/electron-insta-crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkam678/electron-insta-crawler/issues"
+  },
+  "homepage": "https://github.com/kkam678/electron-insta-crawler#readme",
+  "dependencies": {
+    "electron": "^24.3.1",
+    "electron-log": "^4.4.8",
+    "puppeteer": "^20.3.0"
+  }
+}
