@@ -1,27 +1,36 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Instagram Crawler</title>
-  <style>
-#webview {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #333;
-}
+<html>
+  <body>
+    <input type="text" id="input1" placeholder="인스타그램 계정 입력" />
+    <input type="text" id="input2" placeholder="비밀번호 입력" />
+    <button id="runPuppeteer">Run Puppeteer</button>
+    <script>
+      const { ipcRenderer } = require("electron");
 
-#startButton{
-    background:#333;
-    color:#fff;
-}
+      document.getElementById("runPuppeteer").addEventListener("click", () => {
+        runPuppeteer();
+      });
 
-  </style>
-</head>
-<body>
-  <h1>Instagram Crawler</h1>
-  <button type="button" id="startButton">Start Crawling!</button>
-  <!-- <webview id="webview" src="https://www.instagram.com"></webview> -->
-  <webview id="webview" src="https://wbff.thelivetv.co.kr/" autosize="on" minwidth="800" minheight="600" style="display:inline-flex;height:600px;"></webview>
+      document.getElementById("input2").addEventListener("keyup", (e) => {
+        if (e.keyCode == 13) {
+          runPuppeteer();
+        }
+      });
 
-</body>
+      const runPuppeteer = () => {
+        const input1 = document.getElementById("input1").value;
+        const input2 = document.getElementById("input2").value;
+        if (!input1) {
+          alert("인스타그램 계정을 입력해 주세요");
+          return false;
+        }
+        if (!input2) {
+          alert("비밀번호를 입력해 주세요");
+          return false;
+        }
+        ipcRenderer.send("runPuppeteer", input1, input2);
+      };
+    </script>
+  </body>
 </html>
